@@ -1,0 +1,76 @@
+# DATA COMMONS
+wn_candidates_path: data/WSD_Evaluation_Framework/Data_Validation/candidatesWN30.txt
+text_encoding_strategy: relative-positions
+use_definition_start: True
+
+# SENSE INVENTORIES
+train_sense_inventory:
+  _target_: src.sense_inventories.WordNetSenseInventory
+  wn_candidates_path: ${data.wn_candidates_path}
+
+dev_sense_inventory: null
+
+
+# DEPENDENCY FINDER
+dependency_finder:
+  _target_: src.dependency_finder.PPMIPolysemyDependencyFinder
+  max_dependencies: 9
+  sense_inventory: ${sense_inventory}
+  single_counter_path: data/pmi/en/words_counter.tsv
+  pair_counter_path: data/pmi/en/word_pairs_counter.tsv
+  energy: 0.7
+  normalize_ppmi: True
+  minimum_ppmi: 0.1
+  with_pos: False
+
+
+# TRAIN DATASET
+train_dataset:
+  _target_: src.consec_dataset.ConsecDataset.from_disambiguation_corpus
+  disambiguation_corpus:
+    _target_: src.disambiguation_corpora.WordNetCorpus
+    raganato_path: data/WSD_Evaluation_Framework/Training_Corpora/SemCor/semcor
+    materialize: True
+    cached: False
+    shuffle: True
+  sentence_window: 2  # one prev one next
+  randomize_sentence_window: True
+  use_definition_start: ${data.use_definition_start}
+  remove_multilabel_instances: True
+  shuffle_definitions: True
+  randomize_dependencies: True
+  text_encoding_strategy: ${data.text_encoding_strategy}
+  tokens_per_batch: 1536
+  max_batch_size: 128
+  section_size: 45_000
+  prebatch: True
+  shuffle: True
+
+
+# VALIDATION DATASETS
+validation_datasets_identifier:
+  - directed
+  - undirected
+
+validation_dataset:
+  _target_: src.consec_dataset.ConsecDataset.from_disambiguation_corpus
+  disambiguation_corpus:
+    _target_: src.disambiguation_corpora.WordNetCorpus
+    raganato_path: data/WSD_Evaluation_Framework/Evaluation_Datasets/semeval2007/semeval2007
+    materialize: True
+    cached: False
+  sentence_window: 2  # one prev one next
+  randomize_sentence_window: False
+  use_definition_start: ${data.use_definition_start}
+  remove_multilabel_instances: False
+  shuffle_definitions: False
+  randomize_dependencies: False
+  text_encoding_strategy: ${data.text_encoding_strategy}
+  tokens_per_batch: 4096
+  max_batch_size: 1024
+  section_size: -1
+  prebatch: True
+  shuffle: False
+
+# DataLoader
+num_workers: 0

@@ -1,0 +1,8 @@
+# @package _group_
+
+train_path: 'data/train.tsv'
+validation_path: 'data/validation.tsv'
+test_path: 'data/test.tsv'
+
+batch_size: 16
+num_workers: 1

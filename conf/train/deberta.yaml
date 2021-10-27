@@ -1,0 +1,50 @@
+# reproducibility
+seed: 96
+
+# model name
+model_name: consec_deberta  # used to name the directory in which model's checkpoints will be stored (experiments/model_name/...)
+
+# wandb
+comet_project: consec
+
+# pl_trainer
+pl_trainer:
+  _target_: pytorch_lightning.Trainer
+  gpus: 1
+  accumulate_grad_batches: 5
+  gradient_clip_val: 1.0
+  val_check_interval: 2000
+  max_steps: 1_000_000
+  precision: 16
+  amp_level: O1
+
+# optimization
+optimizer: radam
+learning_rate: 3e-6
+weight_decay: 0.01
+no_decay_params:
+  - bias
+  - LayerNorm.weight
+
+# CALLBACKS
+callbacks_monitor: greedy_ppmi_f1
+callbacks_mode: max
+
+# early stopping callback
+# "early_stopping_callback: null" will disable early stopping
+early_stopping_callback:
+  _target_: pytorch_lightning.callbacks.EarlyStopping
+  monitor: ${train.callbacks_monitor}
+  mode: ${train.callbacks_mode}
+  patience: 25
+
+# model_checkpoint_callback
+# "model_checkpoint_callback: null" will disable model checkpointing
+model_checkpoint_callback:
+  # _target_: pytorch_lightning.callbacks.ModelCheckpoint
+  _target_: src.pl_callbacks.ModelCheckpointWithBest
+  monitor: ${train.callbacks_monitor}
+  mode: ${train.callbacks_mode}
+  verbose: True
+  save_top_k: 3
+  dirpath: checkpoints

@@ -1,0 +1,14 @@
+consec_tokenizer:
+  _target_: src.consec_tokenizer.DeBERTaTokenizer
+  transformer_model: ${model.transformer_model}
+  add_prefix_space: True
+  # target_marker: ["{{{", "}}}"]
+  target_marker: ["<d>", "</d>"]
+  context_definitions_token: 'CONTEXT_DEFS'
+  context_markers:
+     number: 1
+     pattern: ['DEF_SEP', 'DEF_END']
+#    number: 100
+#    pattern: ["<c#I#>", "</c#I#>"]
+  optimize_relative_positions: True
+  enforce_symmetry: False

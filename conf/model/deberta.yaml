@@ -1,0 +1,7 @@
+transformer_model: 'microsoft/deberta-large'
+
+sense_extractor:
+  _target_: src.sense_extractors.DebertaPositionalExtractor
+  transformer_model: ${model.transformer_model}
+  dropout: 0.0
+  use_definitions_mask: True
