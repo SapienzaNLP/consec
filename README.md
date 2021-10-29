@@ -60,7 +60,7 @@ evaluation framework).
 
 ## Interactive Predict
 
-We also implemented an interactive predict that allows you to *interactively* query the model; given as input:
+We also implemented an interactive predict that allows you to query the model *interactively*; given as input:
 * a word in a context
 * its candidate definitions
 * its context definitions
