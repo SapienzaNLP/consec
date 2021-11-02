@@ -37,7 +37,7 @@ Anyway, training is done via the training script, *src/scripts/model/train.py*, 
 folders (but for the *conf/test/* folder which is used for evaluation). Once you applied all your desired changes, you can
 run the new training with:
 ```bash
-PYTHONPATH=$(pwd) python src/scripts/model/train.py
+(consec) user@user-pc:~/consec$ PYTHONPATH=$(pwd) python src/scripts/model/train.py
 ```
 
 ## Evaluate
@@ -51,7 +51,7 @@ Parameters are quite self-explanatory and you might be most interested in the fo
 
 To make a practical example, to evaluate the checkpoint we released against SemEval-2007, run the following command:
 ```bash
-PYTHONPATH=$(pwd) python src/scripts/model/raganato_evaluate.py model.model_checkpoint=experiments/released-ckpts/consec_semcor_normal_best.ckpt test_raganato_path=data/WSD_Evaluation_Framework/Evaluation_Datasets/semeval2007/semeval2007
+(consec) user@user-pc:~/consec$ PYTHONPATH=$(pwd) python src/scripts/model/raganato_evaluate.py model.model_checkpoint=experiments/released-ckpts/consec_semcor_normal_best.ckpt test_raganato_path=data/WSD_Evaluation_Framework/Evaluation_Datasets/semeval2007/semeval2007
 ```
 
 **NOTE**: *test_raganato_path* expects what we refer to as a **raganato path**, that is, a prefix path such that both 
