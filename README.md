@@ -1,10 +1,32 @@
 # ConSeC
 
+[ConSeC](https://aclanthology.org/2021.emnlp-main.112/) is a novel approach to Word Sense Disambiguation (WSD), accepted at EMNLP 2021. It frames WSD as a text extraction task and features a feedback loop strategy that allows the disambiguation of a target word to be conditioned not only on its context but also on the explicit senses assigned to nearby words.
+
+![ConSeC Image](data/repo-assets/consec.png)
+
+If you find our paper, code or framework useful, please reference this work in your paper:
+
+```
+@inproceedings{barba-etal-2021-consec,
+    title = "{C}on{S}e{C}: Word Sense Disambiguation as Continuous Sense Comprehension",
+    author = "Barba, Edoardo  and
+      Procopio, Luigi  and
+      Navigli, Roberto",
+    booktitle = "Proceedings of the 2021 Conference on Empirical Methods in Natural Language Processing",
+    month = nov,
+    year = "2021",
+    address = "Online and Punta Cana, Dominican Republic",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2021.emnlp-main.112",
+    pages = "1492--1503",
+}
+```
+
+## Setup Env
+
 Requirements:
 * Debian-based (e.g. Debian, Ubuntu, ...) system 
 * [conda](https://docs.conda.io/en/latest/) installed
-
-## Setup Env
 
 Run the following command to quickly setup the env needed to run our code:
 ```bash
