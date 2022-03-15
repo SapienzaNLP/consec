@@ -1,5 +1,7 @@
 # ConSeC
 
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/consec-word-sense-disambiguation-as/word-sense-disambiguation-on-supervised)](https://paperswithcode.com/sota/word-sense-disambiguation-on-supervised?p=consec-word-sense-disambiguation-as)
+
 [ConSeC](https://aclanthology.org/2021.emnlp-main.112/) is a novel approach to Word Sense Disambiguation (WSD), accepted at EMNLP 2021. It frames WSD as a text extraction task and features a feedback loop strategy that allows the disambiguation of a target word to be conditioned not only on its context but also on the explicit senses assigned to nearby words.
 
 ![ConSeC Image](data/repo-assets/consec.png)
