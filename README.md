@@ -44,8 +44,9 @@ Finally, download the following resources:
   rm pmi.tar.gz
   cd ..
   ```
-* optionally, you can download the [checkpoint](https://drive.google.com/file/d/15__onFMnfGKKyulFxQLStUxdNKiqq-Rn/view?usp=sharing) trained on Semcor only that achieves 82.0 on ALL;
-  place it inside the *experiments/* folder (we recommend *experiments/released-ckpts/*)
+* optionally, you can download the following checkpoints and place them inside the *experiments/* folder (we recommend *experiments/released-ckpts/*):
+  * [ConSeC-SemCor](https://drive.google.com/file/d/15__onFMnfGKKyulFxQLStUxdNKiqq-Rn/view?usp=sharing), that is, ConSeC trained on SemCor only (82.0 on ALL);
+  * [ConSeC-SemCor+WNGT](https://drive.google.com/file/d/1dwzQ7QDwe8hH4pGBBe-5g4N_BI2eLDfA/view?usp=sharing), that is, ConSeC trained on SemCor + WNGT (83.2 on ALL);
 
 ## Train
 

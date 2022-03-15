@@ -33,7 +33,22 @@ sudo apt-get install libxml2-utils
 read -p "Download raganato framework? [y/N] "
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
+
   wget -P data/ http://lcl.uniroma1.it/wsdeval/data/WSD_Evaluation_Framework.zip
   unzip -d data/ data/WSD_Evaluation_Framework.zip
   rm data/WSD_Evaluation_Framework.zip
+
+  # download WNG and WNE
+  read -p "Download WNG and WNE? [y/N] "
+  if [[ $REPLY =~ ^[Yy]$ ]]
+  then
+    mkdir data/WSD_Evaluation_Framework/Training_Corpora/WNG/
+    wget -P data/WSD_Evaluation_Framework/Training_Corpora/WNG/ https://raw.githubusercontent.com/SapienzaNLP/ewiser/master/res/corpora/training/orig/glosses_main.data.xml
+    wget -P data/WSD_Evaluation_Framework/Training_Corpora/WNG/ https://raw.githubusercontent.com/SapienzaNLP/ewiser/master/res/corpora/training/orig/glosses_main.gold.key.txt
+
+    mkdir data/WSD_Evaluation_Framework/Training_Corpora/WNE/
+    wget -P data/WSD_Evaluation_Framework/Training_Corpora/WNE/ https://raw.githubusercontent.com/SapienzaNLP/ewiser/master/res/corpora/training/orig/examples.data.xml
+    wget -P data/WSD_Evaluation_Framework/Training_Corpora/WNE/ https://raw.githubusercontent.com/SapienzaNLP/ewiser/master/res/corpora/training/orig/examples.gold.key.txt
+  fi
+
 fi
